@@ -4,8 +4,8 @@ import roonRoutes from './controller/room/room.route'
 const app = express();
 const port = 3000;
 
-app.use(express.json()); //Used to parse JSON bodies
-app.use(express.urlencoded()); //Parse URL-encoded bodies
+app.use(express.json()); // Used to parse JSON bodies
+app.use(express.urlencoded()); // Parse URL-encoded bodies
 
 // mount all routes on /api path
 app.use('/api', roonRoutes);
