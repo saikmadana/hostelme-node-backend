@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && REMOTE_URL=https://hostelme-node-backend.herokuapp.com node dist/app.js",
     "build": "rm -rf dist && tsc",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watchAll",
