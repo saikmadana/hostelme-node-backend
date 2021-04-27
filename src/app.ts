@@ -1,5 +1,25 @@
 import express from 'express';
 import roonRoutes from './controller/room/room.route'
+import "reflect-metadata";
+
+import { createConnection } from "typeorm";
+import { User } from "./entity/user";
+
+// createConnection({
+//     type: "mysql",
+//     host: "localhost",
+//     port: 3306,
+//     username: "root",
+//     password: "Passw0rd@123",
+//     database: "hostelme",
+//     entities: [
+//         __dirname + "/entity/*.ts"
+//     ],
+//     synchronize: true,
+//     logging: false
+// }).then(connection => {
+//     // here you can start to work with your entities
+// }).catch(error => console.log(error));
 
 const app = express();
 const port = 3000;
