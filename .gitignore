@@ -1,14 +1,7 @@
-# Dependency directories
+.idea/
+.vscode/
 node_modules/
-src/**/*.js
-src/**/*.map
-coverage
-
-# Build files
-dist/**
-
-# Optional npm cache directory
-.npm
-
-# dotenv environment variables file
-.env
+build/
+dist/
+tmp/
+temp/
