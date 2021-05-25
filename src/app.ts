@@ -1,10 +1,6 @@
 import express from 'express';
-import roonRoutes from './controller/room/room.route'
+import roomRoutes from './controller/room/room.route'
 
-
-import { User } from "./entity/user";
-
-import { connectionManager } from './common/dbutils'
 
 const app = express();
 const port = 3000;
@@ -13,18 +9,12 @@ app.use(express.json()); // Used to parse JSON bodies
 app.use(express.urlencoded()); // Parse URL-encoded bodies
 
 // mount all routes on /api path
-app.use('/api', roonRoutes);
+app.use('/api/room', roomRoutes);
 
-app.get('/hey', async (req, res) => {
-    const cm = await connectionManager();
-    const users = await cm.manager.find(User);
-    res.send(users);
-});
-
-app.get('/hey2', async (req, res) => {
-    const cm = await connectionManager();
-    const users = await cm.manager.find(User);
-    res.send(users);
+app.get('/test', async (req, res) => {
+    res.send({
+        "Hello": "World!"
+    });
 });
 
 export const getString = () => {
