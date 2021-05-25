@@ -1,6 +1,6 @@
 import supertest, { Response, SuperTest, Test } from 'supertest'
 
-const remoteUrl = true ? 'https://hostelme-node-backend.herokuapp.com' : 'http://localhost:3000'
+const remoteUrl = false ? 'https://hostelme-node-backend.herokuapp.com' : 'http://localhost:3000'
 
 // tslint:disable-next-line: no-let
 let requestP: SuperTest<Test>

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/controller/room/room.route.ts</title>
+    <title>Code coverage report for src/controller/room/get-room.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/controller/room</a> room.route.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/controller/room</a> get-room.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/31</span>
+                <span class='fraction'>0/36</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/31</span>
+                <span class='fraction'>0/36</span>
             </div>
         
             
@@ -87,7 +87,12 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -117,37 +122,47 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import express from 'express';</span></span></span>
-<span class="cstat-no" title="statement not covered" >import roomCtrl from './room';</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { Request, Response } from 'express'</span></span></span>
+<span class="cstat-no" title="statement not covered" >import { connectionManager } from "../../common/dbutils";</span>
+<span class="cstat-no" title="statement not covered" >import { getErrorMessage } from '../../common/util';</span>
+<span class="cstat-no" title="statement not covered" >import { Room } from "../../entity/room";</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const router = express.Router();</span>
+<span class="cstat-no" title="statement not covered" >export const getRooms = async (req: Request, res: Response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
+<span class="cstat-no" title="statement not covered" >        const cm = await connectionManager();</span>
+<span class="cstat-no" title="statement not covered" >        const rooms = await cm.manager.find(Room);</span>
+<span class="cstat-no" title="statement not covered" >        if(!rooms.length) {</span>
+<span class="cstat-no" title="statement not covered" >            throw Error("No rooms found");</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >        return res.send({</span>
+<span class="cstat-no" title="statement not covered" >            status: true,</span>
+<span class="cstat-no" title="statement not covered" >            data: rooms</span>
+<span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" >    } catch(err) {</span>
+<span class="cstat-no" title="statement not covered" >        console.error(err, "Error in getting room data")</span>
+<span class="cstat-no" title="statement not covered" >        return res.send({</span>
+<span class="cstat-no" title="statement not covered" >            status: false,</span>
+<span class="cstat-no" title="statement not covered" >            message: getErrorMessage(err)</span>
+<span class="cstat-no" title="statement not covered" >        })</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >router.route('/')</span>
-<span class="cstat-no" title="statement not covered" >  /** GET /api/tasks - Get list of tasks */</span>
-<span class="cstat-no" title="statement not covered" >  .get(roomCtrl.list)</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  /** POST /api/tasks - Create new task */</span>
-<span class="cstat-no" title="statement not covered" >  .post(roomCtrl.create);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >router.route('/:roomId')</span>
-<span class="cstat-no" title="statement not covered" >  /** GET /api/tasks/:taskId - Get task */</span>
-<span class="cstat-no" title="statement not covered" >  .get(roomCtrl.get)</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  /** PUT /api/tasks/:taskId - Update task */</span>
-<span class="cstat-no" title="statement not covered" >  .put(roomCtrl.update)</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  /** DELETE /api/tasks/:taskId - Delete task */</span>
-<span class="cstat-no" title="statement not covered" >  .delete(roomCtrl.remove);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >/** Load task when API with taskId route parameter is hit */</span>
-<span class="cstat-no" title="statement not covered" >// router.param('roomId', roomCtrl.load);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >/**</span>
-<span class="cstat-no" title="statement not covered" > * TODO: Following is not working</span>
-<span class="cstat-no" title="statement not covered" > */</span>
-<span class="cstat-no" title="statement not covered" >router.use('/room', router);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export default router;</span></pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >export const getRoomDetails = async (req: Request, res: Response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
+<span class="cstat-no" title="statement not covered" >        const cm = await connectionManager();</span>
+<span class="cstat-no" title="statement not covered" >        const room = await cm.manager.findOne(Room, 101);</span>
+<span class="cstat-no" title="statement not covered" >        return res.send({</span>
+<span class="cstat-no" title="statement not covered" >            data: room</span>
+<span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" >    } catch(err) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log(err, "Error in getting room details data")</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >}</span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
