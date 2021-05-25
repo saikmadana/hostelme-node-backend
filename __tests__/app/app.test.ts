@@ -12,7 +12,7 @@ const mockData = [
 describe("Test", () => {
     mockData.forEach((eachMockData) => {
         it(eachMockData.testScenario, async () => {
-            const res = await testGet(`/hey`)
+            const res = await testGet(`/test`)
             console.log(res.body, "ressssssssssssssss")
             expect(res.status).toBe(200)
         })
