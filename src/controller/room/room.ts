@@ -1,8 +1,11 @@
-// tslint:disable-next-line: no-empty
-const list = () => {}
+import { getRooms, getRoomDetails } from "./get-room"
+
 
 // tslint:disable-next-line: no-empty
-const get = () => {}
+const list =  getRooms
+
+// tslint:disable-next-line: no-empty
+const get = getRoomDetails
 
 // tslint:disable-next-line: no-empty
 const create = () => {}
@@ -14,7 +17,9 @@ const update = () => {}
 const remove = () => {}
 
 // tslint:disable-next-line: no-empty
-const load = () => {}
+const load = () => {
+    console.log("load script executed")
+}
 
 export default {
     list,

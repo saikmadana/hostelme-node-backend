@@ -10,7 +10,7 @@ router.route('/')
   /** POST /api/tasks - Create new task */
   .post(roomCtrl.create);
 
-router.route('/:taskId')
+router.route('/:roomId')
   /** GET /api/tasks/:taskId - Get task */
   .get(roomCtrl.get)
 
@@ -21,8 +21,11 @@ router.route('/:taskId')
   .delete(roomCtrl.remove);
 
 /** Load task when API with taskId route parameter is hit */
-router.param('roomId', roomCtrl.load);
+// router.param('roomId', roomCtrl.load);
 
-router.use('/tasks', router);
+/**
+ * TODO: Following is not working
+ */
+router.use('/room', router);
 
 export default router;
