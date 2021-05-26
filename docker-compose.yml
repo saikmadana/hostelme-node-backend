@@ -1,0 +1,6 @@
+version: '3'
+services: 
+    hostlme-node-backend:
+        image: hostlme-node-backend
+        ports: 
+            - 3000:3000

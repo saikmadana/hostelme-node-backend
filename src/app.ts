@@ -17,12 +17,8 @@ app.get('/test', async (req, res) => {
     });
 });
 
-export const getString = () => {
-    return 'Test the actions integrator!'
-}
-
 app.listen((process.env.PORT || port), () => {
-    return console.log(`server is listening on this ${port}`);
+    return console.log(`server is listening on this ${process.env.PORT || port}`);
 }).on('error', (err) => {
     if (err) {
         return console.error(err);
