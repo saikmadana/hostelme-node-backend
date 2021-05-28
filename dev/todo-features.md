@@ -1,0 +1,1 @@
+- Add environment files and load sensitive data like config, passwords etc.. from it during build process
