@@ -1,6 +1,19 @@
 version: '3'
 services: 
-    hostlme-node-backend:
-        image: hostlme-node-backend
+    mysql-db:
+        image: mysql
+        ports: 
+            - 3307:3306
+        environment: 
+            - MYSQL_ROOT_PASSWORD=passw0rd
+            - MYSQL_ROOT_HOST=%
+        volumes: 
+            - mysql-db-volume:/var/lib/mysql
+    hostelme-node-backend:
+        image: hostelme-node-backend
         ports: 
             - 3000:3000
+
+volumes: 
+    mysql-db-volume:
+        driver: local
