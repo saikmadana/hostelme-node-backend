@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "node app.js",
+    "start-local": "nodemon",
     "build": "rm -rf dist && tsc",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watchAll",
