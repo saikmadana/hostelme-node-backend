@@ -1,7 +1,6 @@
 import { Request, Response } from 'express'
 
 export const users = (req: Request, res: Response) => {
-    console.log(req.body, "reqqqq")
     if(req.body.page == 1) {
         return res.send({
             "status": true,
