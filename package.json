@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@types/express": "^4.17.11",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "husky": "^4.3.8",
     "mysql": "^2.14.1",
